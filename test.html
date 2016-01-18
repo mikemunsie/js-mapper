@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+</head>
+<body>
+<script src="mapper.js"></script>
+<script>
+
+var Oreo = {
+  doubleStuff: Boolean,
+  hasCreamFilling: Boolean,
+  cookiesLeft: Number
+};
+
+var Food = {
+  name: String,
+  calories: Number,
+  oreo: Oreo
+};
+
+var User = {
+  name: String,
+  age: Number,
+  food: [Food]
+};
+
+var data = {
+  name: "Mike",
+  age: 28,
+  extraData: "This will be ignored since the property doesn't exist",
+  food: [
+    {
+      name: "Cheesecake",
+      calories: 1000
+    },
+    {
+      name: "Oreo",
+      calories: 100,
+      oreo: {
+        doubleStuff: "true", // this will be ignored since it's a string
+        hasCreamFilling: true
+      }
+    }
+  ]
+};
+
+console.log(JSON.stringify(Mapper(data, User)));
+</script>
+</body>
+</html>
